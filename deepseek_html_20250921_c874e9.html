@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindFlux AI - Experience 20+ AI Models</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mindflux-purple': '#7C3AED',
+                        'mindflux-indigo': '#4F46E5',
+                        'mindflux-gradient-from': '#8B5CF6',
+                        'mindflux-gradient-to': '#6366F1',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .model-card {
+            transition: all 0.3s ease;
+        }
+        
+        .model-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .feature-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .neon-shadow {
+            box-shadow: 0 0 5px #7C3AED, 0 0 15px #7C3AED, 0 0 25px #7C3AED;
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #7C3AED;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #7C3AED; }
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="h-8 w-8 bg-mindflux-purple rounded-md flex items-center justify-center neon-shadow">
+                            <span class="text-white font-bold text-lg">M</span>
+                        </div>
+                        <span class="ml-2 text-xl font-bold text-gray-800">MindFlux AI</span>
+                    </div>
+                    <div class="hidden md:ml-10 md:flex md:space-x-8">
+                        <a href="#" class="border-mindflux-purple text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Models</a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Pricing</a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="hidden md:ml-4 md:flex items-center">
+                        <button class="bg-gray-100 p-1 rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <button class="ml-3 bg-gray-100 p-1 rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
+                            <i class="fas fa-bell"></i>
+                        </button>
+                    </div>
+                    <div class="flex-shrink-0 ml-4">
+                        <a href="https://8vp49x-3000.csb.app" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-mindflux-purple shadow-sm hover:bg-mindflux-indigo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-mindflux-purple neon-shadow">
+                            Start Chatting
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-gradient text-white relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-black opacity-10"></div>
+            <div class="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-black to-transparent opacity-10"></div>
+        </div>
+        <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center">
+                <h1 class="mt-1 text-4xl font-extrabold sm:text-5xl sm:tracking-tight lg:text-6xl">
+                    <span class="block">Experience the Power of</span>
+                    <span class="block typewriter mt-3">20+ AI Models</span>
+                </h1>
+                <p class="max-w-xl mt-5 mx-auto text-xl text-purple-100">
+                    MindFlux AI brings you the most advanced AI models for all your daily tasks, creative projects, and problem-solving needs.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row sm:justify-center gap-3">
+                    <a href="https://8vp49x-3000.csb.app" class="cta-button inline-flex items-center px-6 py-4 border border-transparent text-base font-medium rounded-md text-purple-700 bg-white hover:bg-gray-50 shadow-lg">
+                        Start Chatting Now
+                        <svg class="ml-2 -mr-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="#models" class="cta-button inline-flex items-center px-6 py-4 border border-transparent text-base font-medium rounded-md text-white bg-black bg-opacity-20 hover:bg-opacity-30 shadow-lg">
+                        Explore Models
+                        <svg class="ml-2 -mr-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black to-transparent opacity-10"></div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 gap-8 text-center md:grid-cols-4">
+                <div>
+                    <p class="text-4xl font-extrabold text-mindflux-purple">20+</p>
+                    <p class="mt-1 text-sm font-medium text-gray-500 uppercase tracking-wide">AI Models</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-extrabold text-mindflux-purple">99.9%</p>
+                    <p class="mt-1 text-sm font-medium text-gray-500 uppercase tracking-wide">Uptime</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-extrabold text-mindflux-purple">24/7</p>
+                    <p class="mt-1 text-sm font-medium text-gray-500 uppercase tracking-wide">Support</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-extrabold text-mindflux-purple">1M+</p>
+                    <p class="mt-1 text-sm font-medium text-gray-500 uppercase tracking-wide">Users</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-base font-semibold text-mindflux-purple tracking-wide uppercase">Features</h2>
+                <p class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Everything you need in one place
+                </p>
+                <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+                    Our AI models are designed to help with a wide range of tasks and challenges.
+                </p>
+            </div>
+
+            <div class="mt-12">
+                <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                    <!-- Feature 1 -->
+                    <div class="pt-6">
+                        <div class="flow-root bg-white rounded-lg px-6 pb-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                            <div class="-mt-6">
+                                <div>
+                                    <span class="inline-flex items-center justify-center p-3 bg-mindflux-purple rounded-md shadow-lg">
+                                        <i class="fas fa-robot text-white text-2xl"></i>
+                                    </span>
+                                </div>
+                                <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Multiple AI Models</h3>
+                                <p class="mt-5 text-base text-gray-500">
+                                    Choose from 20+ specialized AI models, each optimized for different tasks and challenges.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="pt-6">
+                        <div class="flow-root bg-white rounded-lg px-6 pb-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                            <div class="-mt-6">
+                                <div>
+                                    <span class="inline-flex items-center justify-center p-3 bg-mindflux-purple rounded-md shadow-lg">
+                                        <i class="fas fa-bolt text-white text-2xl"></i>
+                                    </span>
+                                </div>
+                                <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Lightning Fast Responses</h3>
+                                <p class="mt-5 text-base text-gray-500">
+                                    Get accurate answers and solutions in seconds with our optimized AI infrastructure.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="pt-6">
+                        <div class="flow-root bg-white rounded-lg px-6 pb-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                            <div class="-mt-6">
+                                <div>
+                                    <span class="inline-flex items-center justify-center p-3 bg-mindflux-purple rounded-md shadow-lg">
+                                        <i class="fas fa-lock text-white text-2xl"></i>
+                                    </span>
+                                </div>
+                                <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Secure & Private</h3>
+                                <p class="mt-5 text-base text-gray-500">
+                                    Your conversations are encrypted and we never share your data with third parties.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Models Showcase -->
+    <div id="models" class="bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-base font-semibold text-mindflux-purple tracking-wide uppercase">Models</h2>
+                <p class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Explore Our AI Models
+                </p>
+                <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+                    Each model is specialized for different types of tasks and challenges.
+                </p>
+            </div>
+
+            <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                <!-- Model 1 -->
+                <div class="model-card bg-white overflow-hidden shadow rounded-lg border border-gray-100 hover:border-mindflux-purple transition-all duration-300">
+                    <div class="px-4 py-5 sm:p-6">
+                        <div class="feature-icon inline-flex p-3 rounded-md text-white">
+                            <i class="fas fa-comment text-2xl"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Conversational Pro</h3>
+                        <p class="mt-2 text-sm text-gray-500">
+                            Perfect for natural conversations and general questions.
+                        </p>
+                        <div class="mt-4">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                                Popular
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Model 2 -->
+                <div class="model-card bg-white overflow-hidden shadow rounded-lg border border-gray-100 hover:border-mindflux-purple transition-all duration-300">
+                    <div class="px-4 py-5 sm:p-6">
+                        <div class="feature-icon inline-flex p-3 rounded-md text-white">
+                            <i class="fas fa-pen-fancy text-2xl"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Creative Writer</h3>
+                        <p class="mt-2 text-sm text-gray-500">
+                            Generate stories, poetry, and creative content.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Model 3 -->
+                <div class="model-card bg-white overflow-hidden shadow rounded-lg border border-gray-100 hover:border-mindflux-purple transition-all duration-300">
+                    <div class="px-4 py-5 sm:p-6">
+                        <div class="feature-icon inline-flex p-3 rounded-md text-white">
+                            <i class="fas fa-code text-2xl"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Code Assistant</h3>
+                        <p class="mt-2 text-sm text-gray-500">
+                            Get help with programming and debugging code.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Model 4 -->
+                <div class="model-card bg-white overflow-hidden shadow rounded-lg border border-gray-100 hover:border-mindflux-purple transition-all duration-300">
+                    <div class="px-4 py-5 sm:p-6">
+                        <div class="feature-icon inline-flex p-3 rounded-md text-white">
+                            <i class="fas fa-chart-line text-2xl"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Data Analyst</h3>
+                        <p class="mt-2 text-sm text-gray-500">
+                            Analyze data and get insights from complex information.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center">
+                <a href="#" class="text-mindflux-purple hover:text-mindflux-indigo font-medium inline-flex items-center">
+                    View all 20+ models 
+                    <svg class="ml-1 w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="bg-gray-50 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-base font-semibold text-mindflux-purple tracking-wide uppercase">Testimonials</h2>
+                <p class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    What our users say
+                </p>
+            </div>
+            <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <div class="flex items-center">
+                        <div class="ml-4">
+                            <div class="text-base font-medium text-gray-900">Sarah Johnson</div>
+                            <div class="text-sm text-mindflux-purple">Software Engineer</div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-500">"The Code Assistant model has saved me hours of debugging time. It's like having a senior developer by my side 24/7."</p>
+                    </div>
+                    <div class="mt-4 flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <div class="flex items-center">
+                        <div class="ml-4">
+                            <div class="text-base font-medium text-gray-900">Michael Chen</div>
+                            <div class="text-sm text-mindflux-purple">Content Creator</div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-500">"The Creative Writer model has transformed my content creation process. I can now generate ideas and drafts in minutes instead of hours."</p>
+                    </div>
+                    <div class="mt-4 flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <div class="flex items-center">
+                        <div class="ml-4">
+                            <div class="text-base font-medium text-gray-900">Alexis Brown</div>
+                            <div class="text-sm text-mindflux-purple">Research Analyst</div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-500">"The Data Analyst model has revolutionized how I work with complex datasets. It's like having an entire analytics team at my fingertips."</p>
+                    </div>
+                    <div class="mt-4 flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                <span class="block">Ready to get started?</span>
+                <span class="block text-mindflux-purple">Start chatting with AI today.</span>
+            </h2>
+            <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+                <div class="inline-flex rounded-md shadow">
+                    <a href="https://8vp49x-3000.csb.app" class="cta-button inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-mindflux-purple hover:bg-mindflux-indigo neon-shadow">
+                        Get started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+            <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+                <div class="xl:col-span-1">
+                    <div class="flex items-center">
+                        <div class="h-8 w-8 bg-mindflux-purple rounded-md flex items-center justify-center neon-shadow">
+                            <span class="text-white font-bold text-lg">M</span>
+                        </div>
+                        <span class="ml-2 text-xl font-bold text-white">MindFlux AI</span>
+                    </div>
+                    <p class="mt-4 text-base text-gray-300">
+                        Empowering your daily life with advanced AI models.
+                    </p>
+                    <div class="mt-4 flex space-x-5">
+                        <a href="#" class="text-gray-400 hover:text-gray-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gray-300">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gray-300">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Solutions</h3>
+                            <ul class="mt-4 space-y-4">
+                                <li><a href="#" class="text-base text-gray-400 hover:text-white">Marketing</a></li>
+                                <li><a href="#" class="text-base text-gray-400 hover:text-white">Development</a></li>
+                                <li><a href="#" class="text-base text-gray-400 hover:text-white">Research</a></li>
+                                <li><a href="#" class="text-base text-gray-400 hover:text-white">Education</a></li>
+                            </ul>
+                        </div>
+                        <div class="mt-12 md:mt-0">
+                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Support</h3>
+                            <ul class="mt-4 space-y-4">
+                                <li><a href="#" class="text-base text-gray-400 hover:text-white">Pricing</a></li>
+                                <li><a href="#" class="text-base text-gray-400 hover:text-white">Documentation</a></li>
+                                <li><a href="#" class="text-base text-gray-400 hover:text-white">Guides</a></li>
+                                <li><a href="#" class="text-base text-gray-400 hover:text-white">API Status</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Company</h3>
+                            <ul class="mt-4 space-y-4">
+                                <li><a href="#" class="text-base text-gray-400 hover:text-white">About</a></li>
+                                <li><a href="#" class="text-base text-gray-400 hover:text-white">Blog</a></li>
+                                <li><a href="#" class="text-base text-gray-400 hover:text-white">Jobs</a></li>
+                                <li><a href="#" class="text-base text-gray-400 hover:text-white">Press</a></li>
+                            </ul>
+                        </div>
+                        <div class="mt-12 md:mt-0">
+                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Legal</h3>
+                            <ul class="mt-4 space-y-4">
+                                <li><a href="#" class="text-base text-gray-400 hover:text-white">Privacy</a></li>
+                                <li><a href="#" class="text-base text-gray-400 hover:text-white">Terms</a></li>
+                                <li><a href="#" class="text-base text-gray-400 hover:text-white">Cookie Policy</a></li>
+                                <li><a href="#" class="text-base text-gray-400 hover:text-white">GDPR</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8">
+                <p class="text-base text-gray-400 text-center">
+                    &copy; 2023 MindFlux AI. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for model cards on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const modelCards = document.querySelectorAll('.model-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            modelCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Dark mode toggle
+            const darkModeToggle = document.querySelector('nav button:first-of-type');
+            darkModeToggle.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+            });
+        });
+    </script>
+</body>
+</html>
